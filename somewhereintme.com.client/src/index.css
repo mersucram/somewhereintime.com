@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --font-display: Georgia, "Times New Roman", Times, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+  }
+}
+
+@utility sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

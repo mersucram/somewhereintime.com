@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "home": "~/",
+    "about": "~/about",
+    "contact": "~/contact",
+    "recentAquisitions": "~/recent-aquisitions",
+    "artAndCollectables": {
+      "collectables": "~/collectables",
+      "fineArt": "~/fine-art",
+      "antiques": "~/antiques",
+      "jewelry": "~/jewelry",
+      "literature": "~/literature"
+    }
+  }
+}

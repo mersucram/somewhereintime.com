@@ -1,0 +1,7 @@
+# @somewhereintme.com.Server_HostAddress = http://localhost:5085
+@somewhereintme.com.Server_HostAddress = http://somewhereintime.local
+
+GET {{somewhereintme.com.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
