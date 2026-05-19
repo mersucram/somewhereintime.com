@@ -1,7 +1,7 @@
 using System.Text.Json;
-using somewhereintme.com.Server.Models.ServiceData;
+using somewhereintme.Server.Models.ServiceData;
 
-namespace somewhereintme.com.Server.Services;
+namespace somewhereintme.Server.Services;
 
 public class MenuService : IMenuService
 {

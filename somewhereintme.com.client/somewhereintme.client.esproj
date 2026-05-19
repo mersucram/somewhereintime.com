@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\components\form\" />
-    <Folder Include="src\components\ui\" />
     <Folder Include="src\utils\" />
   </ItemGroup>
 </Project>

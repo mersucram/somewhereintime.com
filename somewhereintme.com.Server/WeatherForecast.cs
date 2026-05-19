@@ -1,4 +1,4 @@
-namespace somewhereintme.com.Server;
+namespace somewhereintme.Server;
 
 public class WeatherForecast
 {

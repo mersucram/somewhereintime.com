@@ -1,4 +1,4 @@
-namespace somewhereintme.com.Server.Models.ServiceData;
+namespace somewhereintme.Server.Models.ServiceData;
 
 public class MenuOptions
 {

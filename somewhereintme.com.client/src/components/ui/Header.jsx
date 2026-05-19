@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchMenuOptions } from "@/api/menu";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { buildMenuItems } from "@/utils/menuNavigation";
+import PingIndicator from "@/components/ui/PingIndicator";
 
 const MOBILE_NAV_QUERY = "(max-width: 900px)";
 
@@ -10,9 +12,13 @@ const navLinkBase =
 
 function NavLink({ href, children, className = "", onClick }) {
   return (
-    <a href={href} className={`${navLinkBase} ${className}`.trim()} onClick={onClick}>
+    <Link
+      to={href}
+      className={`${navLinkBase} ${className}`.trim()}
+      onClick={onClick}
+    >
       {children}
-    </a>
+    </Link>
   );
 }
 
@@ -38,7 +44,8 @@ function NavItem({ item, isMobile, mobileOpen, onNavigate }) {
 
   useEffect(() => {
     if (!mobileOpen) {
-      setSubOpen(false);
+      const t = setTimeout(() => setSubOpen(false), 0);
+      return () => clearTimeout(t);
     }
   }, [mobileOpen]);
 
@@ -119,7 +126,9 @@ const Header = () => {
         }
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : "Failed to load menu");
+          setError(
+            err instanceof Error ? err.message : "Menu service is unavailable",
+          );
         }
       } finally {
         if (!cancelled) {
@@ -141,7 +150,8 @@ const Header = () => {
 
   useEffect(() => {
     if (!isMobile) {
-      setMobileOpen(false);
+      const t = setTimeout(() => setMobileOpen(false), 0);
+      return () => clearTimeout(t);
     }
   }, [isMobile]);
 
@@ -172,13 +182,18 @@ const Header = () => {
         className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
         aria-label="Main navigation"
       >
-        <a
-          href="/"
-          className="font-display text-lg font-semibold tracking-tight text-stone-900 transition-colors hover:text-amber-900 sm:text-xl"
-          onClick={closeMobileMenu}
-        >
-          Somewhere In Time
-        </a>
+        <div className="flex items-center gap-3">
+          <Link
+            to="/"
+            className="font-display text-lg font-semibold tracking-tight text-stone-900 transition-colors hover:text-amber-900 sm:text-xl"
+            onClick={closeMobileMenu}
+          >
+            Somewhere In Time Collectibles, LLC
+          </Link>
+
+          {/* Ping indicator: shows server availability (online/offline) */}
+          <PingIndicator />
+        </div>
 
         {isMobile && (
           <button
@@ -188,7 +203,9 @@ const Header = () => {
             aria-controls="main-menu"
             onClick={() => setMobileOpen((open) => !open)}
           >
-            <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
+            <span className="sr-only">
+              {mobileOpen ? "Close menu" : "Open menu"}
+            </span>
             <span className="relative block h-4 w-5" aria-hidden="true">
               <span
                 className={`absolute left-0 block h-0.5 w-full rounded-full bg-current transition-all duration-200 ${
@@ -202,7 +219,9 @@ const Header = () => {
               />
               <span
                 className={`absolute left-0 block h-0.5 w-full rounded-full bg-current transition-all duration-200 ${
-                  mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "top-full -translate-y-full"
+                  mobileOpen
+                    ? "top-1/2 -translate-y-1/2 -rotate-45"
+                    : "top-full -translate-y-full"
                 }`}
               />
             </span>
@@ -218,7 +237,10 @@ const Header = () => {
           />
         )}
 
-        <div id="main-menu" className="min-[901px]:flex min-[901px]:flex-1 min-[901px]:justify-end">
+        <div
+          id="main-menu"
+          className="min-[901px]:flex min-[901px]:flex-1 min-[901px]:justify-end"
+        >
           <div
             className={[
               "z-30 overflow-visible min-[901px]:block",
@@ -232,7 +254,10 @@ const Header = () => {
             ].join(" ")}
           >
             {loading && (
-              <p className="px-3 py-2 text-sm text-stone-500" aria-live="polite">
+              <p
+                className="px-3 py-2 text-sm text-stone-500"
+                aria-live="polite"
+              >
                 Loading menu…
               </p>
             )}

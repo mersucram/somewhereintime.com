@@ -1,8 +1,8 @@
 <Solution>
-  <Project Path="somewhereintme.com.AppHost/somewhereintme.com.AppHost.csproj" />
-  <Project Path="somewhereintme.com.client/somewhereintme.com.client.esproj">
+  <Project Path="somewhereintme.com.AppHost/somewhereintme.AppHost.csproj" />
+  <Project Path="somewhereintme.com.client/somewhereintme.client.esproj">
     <Build />
   </Project>
-  <Project Path="somewhereintme.com.Server/somewhereintme.com.Server.csproj" />
-  <Project Path="somewhereintme.com.ServiceDefaults/somewhereintme.com.ServiceDefaults.csproj" />
+  <Project Path="somewhereintme.com.Server/somewhereintme.Server.csproj" />
+  <Project Path="somewhereintme.com.ServiceDefaults/somewhereintme.ServiceDefaults.csproj" />
 </Solution>

@@ -1,14 +1,19 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using somewhereintme.com.Server.Services;
+using somewhereintme.Server.Services;
 
-namespace somewhereintme.com.Server.Controllers;
+namespace somewhereintme.Server.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class MenuController(IMenuService menuService) : ControllerBase
+public class MenuController : ControllerBase
 {
-    private readonly IMenuService _menuService = menuService;
+    private readonly IMenuService _menuService;
+
+    public MenuController(IMenuService menuService)
+    {
+        _menuService = menuService;
+    }
 
     [HttpGet("get-menu")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -17,5 +22,13 @@ public class MenuController(IMenuService menuService) : ControllerBase
     {
         var menu = await _menuService.GetMenuAsync();
         return Ok(menu);
+    }
+
+    [HttpGet("ping")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [AllowAnonymous]
+    public IActionResult Ping()
+    {
+        return Ok(new { status = "ok", service = "somewhereintme.com.Server" });
     }
 }
