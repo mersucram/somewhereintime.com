@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import CategoryCard from "@/components/ui/CategoryCard";
 
+// Imported hero images (bundler will hash and include optimized assets)
+import heroSm from "@/assets/hero_1034495517249721109_n_sm.jpg";
+import heroMd from "@/assets/hero_1034495517249721109_n_md.jpg";
+import heroLg from "@/assets/hero_1034495517249721109_n_lg.jpg";
+
 const highlights = [
   {
     title: "Fine Art",
@@ -37,19 +42,35 @@ const highlights = [
 export default function Home() {
   return (
     <div>
-      <section className="relative overflow-hidden border-b border-stone-200/80 bg-gradient-to-b from-amber-50/80 via-white to-stone-50">
-        <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="order-2 lg:order-1">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-800/90">
+      <section className="relative bg-stone-50">
+        {/* Full-bleed hero image */}
+        <div className="absolute inset-0 h-full w-full">
+          <picture>
+            <img
+              src={heroSm}
+              srcSet={`${heroSm} 640w, ${heroMd} 1024w, ${heroLg} 1600w`}
+              sizes="100vw"
+              alt="Somewhere in Time Collectables LLC"
+              // keep the image placement but shift the crop slightly down
+              className="w-full h-full object-cover object-[center_13%] opacity-70"
+              loading="lazy"
+            />
+          </picture>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:py-28 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+            <div className="z-10 text-white">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-100/90">
                 Art &amp; Collectables
               </p>
 
-              <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight text-stone-900 sm:text-4xl lg:text-5xl">
+              <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
                 Timeless pieces, thoughtfully curated
               </h1>
 
-              <p className="mt-6 text-base leading-relaxed text-stone-600 sm:text-lg">
+              <p className="mt-6 text-base leading-relaxed sm:text-lg text-white/90">
                 Somewhere In Time Collectibles, LLC brings together fine art,
                 antiques, jewelry, literature, and collectables for discerning
                 buyers and sellers.
@@ -58,33 +79,20 @@ export default function Home() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   to="/recent-aquisitions"
-                  className="inline-flex items-center justify-center rounded-lg bg-amber-900 px-6 py-3 text-sm font-semibold text-amber-50 shadow-sm transition hover:bg-amber-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+                  className="inline-flex items-center justify-center rounded-lg bg-amber-50 px-6 py-3 text-sm font-semibold text-amber-900 shadow-sm transition hover:bg-amber-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
                 >
                   Recent acquisitions
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex items-center justify-center rounded-lg border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-800 shadow-sm transition hover:border-stone-400 hover:bg-stone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+                  className="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
                 >
                   About us
                 </Link>
               </div>
             </div>
 
-            <div className="order-1 lg:order-2">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg">
-                <img
-                  src="/assets/hero_1034495517249721109_n.jpg"
-                  alt="Curated collection hero"
-                  className="w-full h-64 object-cover sm:h-80 lg:h-[480px]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute left-6 bottom-6 right-6 text-white">
-                    <h2 className="mt-1 text-lg font-semibold">RESCUING THE PAST FOR YOUR FUTURE</h2>
-                </div>
-              </div>
-            </div>
+            <div className="hidden lg:block" />
           </div>
         </div>
       </section>

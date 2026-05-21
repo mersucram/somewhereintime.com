@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PingIndicator from "@/components/ui/PingIndicator";
 
 const footerLinks = [
   { label: "Home", href: "/" },
@@ -103,9 +104,10 @@ function Footer() {
         <div className="mt-10 border-t border-stone-800 pt-8 text-center text-xs text-stone-500 sm:text-left">
           <div className="flex items-center justify-between">
             <div>© {year} Somewhere In Time Collectibles, LLC. All rights reserved.</div>
+            <div>Application Design and Development Provided by <a href="http://www.mergetech.net" target="_blank" aria-description="MergeTech LLC" id="mergeTechLink">MergeTech LLC</a></div>
             <div className="mt-0">
               <a href="/Menu/ping" className="text-stone-400 hover:text-amber-200">
-                Server status
+                Server status   <PingIndicator />        {/* Ping indicator: shows server availability (online/offline) */}                              
               </a>
             </div>
           </div>

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { fetchMenuOptions } from "@/api/menu";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { buildMenuItems } from "@/utils/menuNavigation";
-import PingIndicator from "@/components/ui/PingIndicator";
 
 const MOBILE_NAV_QUERY = "(max-width: 900px)";
 
@@ -190,9 +189,6 @@ const Header = () => {
           >
             Somewhere In Time Collectibles, LLC
           </Link>
-
-          {/* Ping indicator: shows server availability (online/offline) */}
-          <PingIndicator />
         </div>
 
         {isMobile && (

@@ -1,0 +1,11 @@
+name: Local MCP server
+version: 0.0.1
+schema: v1
+apiBase: http://127.0.0.1:1234
+mcpServers:
+  - name: New MCP server
+    command: npx
+    args:
+      - -y
+      - <your-mcp-server>
+    env: {}
