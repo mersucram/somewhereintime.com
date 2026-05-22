@@ -25,18 +25,18 @@ Somewhere In Time Collectibles site.
 ### Details
 
 - Added optimized responsive hero images under
-  `somewhereintme.com.client/src/assets`:
+  `somewhereintime.com.client/src/assets`:
   - `hero_1034495517249721109_n_sm.jpg`
   - `hero_1034495517249721109_n_md.jpg`
   - `hero_1034495517249721109_n_lg.jpg`
 - Removed older public asset copies from
-  `somewhereintme.com.client/public/assets`.
+  `somewhereintime.com.client/public/assets`.
 - Updated `Home.jsx` to use the new imported hero image set.
 - Adjusted home page hero markup and copy presentation around the new image
   content.
 - Updated footer/header UI details related to the revised page treatment.
 - Added project-server configuration changes in
-  `somewhereintme.com.Server.csproj`.
+  `somewhereintime.com.Server.csproj`.
 - Added Continue MCP server YAML files under `.continue/mcpServers`.
 
 ### Impact
@@ -82,7 +82,7 @@ CI configuration, and improved server/client integration.
 - Updated `MenuOptions` model naming/casing behavior.
 - Updated server launch settings.
 - Renamed the server project file from
-  `somewhereintme.com.Server.csproj` to `somewhereintme.Server.csproj`.
+  `somewhereintime.com.Server.csproj` to `somewhereintime.com.Server.csproj`.
 
 ### Frontend
 
@@ -105,7 +105,7 @@ CI configuration, and improved server/client integration.
 - Updated `index.html`, `package.json`, `package-lock.json`, and
   `vite.config.js`.
 - Renamed the client project file from
-  `somewhereintme.com.client.esproj` to `somewhereintme.client.esproj`.
+  `somewhereintime.com.client.esproj` to `somewhereintime.com.client.esproj`.
 
 ### Aspire, Tests, and CI
 
@@ -120,11 +120,11 @@ CI configuration, and improved server/client integration.
 - Added `EmbeddedProjectMetadata.cs` and `Projects.generated.cs`.
 - Updated AppHost startup/registration behavior.
 - Renamed the AppHost project file from
-  `somewhereintme.com.AppHost.csproj` to `somewhereintme.AppHost.csproj`.
+  `somewhereintime.com.AppHost.csproj` to `somewhereintime.com.AppHost.csproj`.
 - Renamed the ServiceDefaults project file from
-  `somewhereintme.com.ServiceDefaults.csproj` to
-  `somewhereintme.ServiceDefaults.csproj`.
-- Updated solution entries in `somewhereintme.com.slnx`.
+  `somewhereintime.com.ServiceDefaults.csproj` to
+  `somewhereintime.com.ServiceDefaults.csproj`.
+- Updated solution entries in `somewhereintime.com.slnx`.
 
 ### Impact
 
@@ -202,8 +202,8 @@ and solution structure.
 ### Project Infrastructure
 
 - Added `.dockerignore`.
-- Added `somewhereintme.com.slnx`.
-- Added `somewhereintme.com.code-workspace`.
+- Added `somewhereintime.com.slnx`.
+- Added `somewhereintime.com.code-workspace`.
 - Added project-level generated changelog/readme notes for server and client
   scaffolding.
 

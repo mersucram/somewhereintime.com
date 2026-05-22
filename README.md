@@ -1,4 +1,4 @@
-# somewhereintme.com
+# somewhereintime.com
 
 Somewhere In Time Collectibles, LLC is a full-stack web application for a
 collectibles, antiques, fine art, jewelry, and literature business. The solution
@@ -11,12 +11,12 @@ The repository is organized as a multi-project .NET solution with a separate
 JavaScript client:
 
 ```text
-somewhereintme.com
-|-- somewhereintme.com.AppHost          # .NET Aspire host/orchestration project
-|-- somewhereintme.com.AppHost.Tests    # xUnit tests for AppHost metadata behavior
-|-- somewhereintme.com.Server           # ASP.NET Core API and static file host
-|-- somewhereintme.com.ServiceDefaults  # Shared Aspire telemetry/health defaults
-`-- somewhereintme.com.client           # React 19 + Vite + Tailwind frontend
+somewhereintime.com
+|-- somewhereintime.com.AppHost          # .NET Aspire host/orchestration project
+|-- somewhereintime.com.AppHost.Tests    # xUnit tests for AppHost metadata behavior
+|-- somewhereintime.com.Server           # ASP.NET Core API and static file host
+|-- somewhereintime.com.ServiceDefaults  # Shared Aspire telemetry/health defaults
+`-- somewhereintime.com.client           # React 19 + Vite + Tailwind frontend
 ```
 
 At runtime, the application has two primary modes:
@@ -47,14 +47,14 @@ At runtime, the application has two primary modes:
 Browser
   |
   v
-Vite dev server (somewhereintme.com.client)
+Vite dev server (somewhereintime.com.client)
   |
   |-- serves React app, assets, HMR, and Tailwind output
   |
   `-- proxies /Menu and /weatherforecast
        |
        v
-ASP.NET Core server (somewhereintme.com.Server)
+ASP.NET Core server (somewhereintime.com.Server)
   |
   `-- controllers and services return JSON
 ```
@@ -62,8 +62,8 @@ ASP.NET Core server (somewhereintme.com.Server)
 The Vite proxy target is resolved from Aspire service environment variables when
 available:
 
-- `services__somewhereintme-com-server__https__0`
-- `services__somewhereintme-com-server__http__0`
+- `services__somewhereintime-com-server__https__0`
+- `services__somewhereintime-com-server__http__0`
 
 If those values are not present, Vite falls back to `https://localhost:7141/`.
 
@@ -81,11 +81,11 @@ ASP.NET Core server
 ```
 
 During publish, the server project runs the frontend build and copies
-`somewhereintme.com.client/dist` into the publish output.
+`somewhereintime.com.client/dist` into the publish output.
 
 ## Frontend Design
 
-The frontend lives in `somewhereintme.com.client/src`.
+The frontend lives in `somewhereintime.com.client/src`.
 
 Important entry points:
 
@@ -141,7 +141,7 @@ appropriate Tailwind layer.
 
 ## Backend Design
 
-The backend lives in `somewhereintme.com.Server`.
+The backend lives in `somewhereintime.com.Server`.
 
 Important files:
 
@@ -165,7 +165,7 @@ which can be removed if it is no longer needed.
 ### Menu Configuration
 
 Navigation is intentionally data-driven. The server reads
-`somewhereintme.com.Server/Properties/menuoptions.json`, deserializes it into
+`somewhereintime.com.Server/Properties/menuoptions.json`, deserializes it into
 `MenuOptions`, and exposes it through `/Menu/get-menu`.
 
 The frontend then normalizes `~/` paths to client routes:
@@ -205,11 +205,11 @@ does not target a file extension. Static assets receive cache headers, while
 
 ## Aspire and Shared Service Defaults
 
-`somewhereintme.com.AppHost` is the Aspire host. It registers the server project
+`somewhereintime.com.AppHost` is the Aspire host. It registers the server project
 through `EmbeddedProjectMetadata`, starts the distributed application, and logs
 startup/shutdown events.
 
-`somewhereintme.com.ServiceDefaults` centralizes cross-cutting runtime behavior:
+`somewhereintime.com.ServiceDefaults` centralizes cross-cutting runtime behavior:
 
 - OpenTelemetry logging, metrics, and tracing.
 - Optional OTLP exporter support through `OTEL_EXPORTER_OTLP_ENDPOINT`.
@@ -250,13 +250,13 @@ server through `dotnet dev-certs https`.
 From the repository root:
 
 ```powershell
-dotnet build .\somewhereintme.com.slnx
-dotnet test .\somewhereintme.com.slnx
-dotnet run --project .\somewhereintme.com.AppHost
-dotnet run --project .\somewhereintme.com.Server
+dotnet build .\somewhereintime.com.slnx
+dotnet test .\somewhereintime.com.slnx
+dotnet run --project .\somewhereintime.com.AppHost
+dotnet run --project .\somewhereintime.com.Server
 ```
 
-From `somewhereintme.com.client`:
+From `somewhereintime.com.client`:
 
 ```powershell
 npm install
@@ -278,7 +278,7 @@ Optional environment variables:
 
 ## Testing
 
-`somewhereintme.com.AppHost.Tests` contains xUnit tests for AppHost metadata.
+`somewhereintime.com.AppHost.Tests` contains xUnit tests for AppHost metadata.
 One integration-style AppHost startup test is intentionally skipped because it
 requires local or CI host tooling.
 
@@ -290,9 +290,9 @@ an effect.
 ## Development Conventions
 
 - Keep navigation route changes synchronized between:
-  - `somewhereintme.com.Server/Properties/menuoptions.json`
-  - `somewhereintme.com.client/src/App.jsx`
-  - `somewhereintme.com.client/src/utils/menuNavigation.js`
+  - `somewhereintime.com.Server/Properties/menuoptions.json`
+  - `somewhereintime.com.client/src/App.jsx`
+  - `somewhereintime.com.client/src/utils/menuNavigation.js`
 - Keep shared visual primitives in `src/components/ui`.
 - Keep backend data contracts in `Models/ServiceData`.
 - Prefer updating `menuoptions.json` for navigation URL changes instead of
@@ -303,7 +303,7 @@ an effect.
 
 ## Deployment Notes
 
-Production deployment should publish `somewhereintme.com.Server`, since that
+Production deployment should publish `somewhereintime.com.Server`, since that
 project produces the API and static client host together. The Dockerfile is set
 up for Linux containers and exposes ports `8080` and `8081`.
 

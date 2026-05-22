@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="somewhereintime.com.AppHost/somewhereintime.com.AppHost.csproj" />
+  <Project Path="somewhereintime.com.client/somewhereintime.com.client.esproj">
+    <Build />
+  </Project>
+  <Project Path="somewhereintime.com.Server/somewhereintime.com.Server.csproj" />
+  <Project Path="somewhereintime.com.ServiceDefaults/somewhereintime.com.ServiceDefaults.csproj" />
+</Solution>
