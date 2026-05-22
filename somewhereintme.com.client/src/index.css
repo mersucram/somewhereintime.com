@@ -23,6 +23,16 @@
   }
 }
 
+@layer components {
+  .hero-copy {
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-shadow:
+      0 1px 1px rgb(0 0 0 / 0.55),
+      0 3px 14px rgb(0 0 0 / 0.45);
+  }
+}
+
 @utility sr-only {
   position: absolute;
   width: 1px;

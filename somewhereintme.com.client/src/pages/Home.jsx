@@ -52,25 +52,26 @@ export default function Home() {
               sizes="100vw"
               alt="Somewhere in Time Collectables LLC"
               // keep the image placement but shift the crop slightly down
-              className="w-full h-full object-cover object-[center_13%] opacity-70"
+              className="h-full w-full object-cover object-[center_13%] opacity-80"
               loading="lazy"
             />
           </picture>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/10" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:py-28 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-            <div className="z-10 text-white">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-100/90">
+            <div className="hero-copy z-10 text-white">
+              <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-amber-50">
                 Art &amp; Collectables
               </p>
 
-              <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+              <h1 className="font-display text-3xl font-semibold leading-tight tracking-normal sm:text-4xl lg:text-5xl">
                 Timeless pieces, thoughtfully curated
               </h1>
 
-              <p className="mt-6 text-base leading-relaxed sm:text-lg text-white/90">
+              <p className="mt-6 text-base font-medium leading-relaxed text-white sm:text-lg">
                 Somewhere In Time Collectibles, LLC brings together fine art,
                 antiques, jewelry, literature, and collectables for discerning
                 buyers and sellers.
