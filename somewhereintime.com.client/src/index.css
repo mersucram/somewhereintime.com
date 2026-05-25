@@ -5,6 +5,38 @@
   --font-display: Georgia, "Times New Roman", Times, serif;
 }
 
+:root {
+    /* Color palette / global design tokens */
+    --bg-primary: rgba(0, 77, 177, 0.76);
+    /* Hero image opacity (0.0 - 1.0) */
+    --hero-image-opacity: 0.55;
+    --bg-secondary: #ffffff;
+    --bg-secondary-header: #ffffff;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --bg-hover: #afb2bb;
+    --accent-tabbadge: #02539eb6;
+    --accent-primary: #404979;
+    --accent-secondary: #9b9b9a;
+    --accent-dim: rgba(127, 156, 137, 0.15);
+    --accent-border: rgba(245, 158, 11, 0.35);
+    --text-primary: #383f53;
+    --text-secondary: #adb3bd;
+    --text-muted: #adb3bd;
+    --border: #2d3548;
+    --border-light: #374162;
+    --success: #10b981;
+    --success-dim: rgba(16, 185, 129, 0.15);
+    --danger: #ef4444;
+    --danger-dim: rgba(239, 68, 68, 0.15);
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --radius: 6px;
+    --radius-lg: 10px;
+    /* Spacing / typographic defaults that integrate with existing @theme */
+    --font-sans: var(--font-sans);
+    --font-display: var(--font-display);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -14,12 +46,121 @@
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
   }
 
   #root {
     display: flex;
     min-height: 100svh;
     flex-direction: column;
+  }
+}
+
+/* Apply sensible defaults for common controls so the variables are used across the site */
+@layer base {
+  a {
+    color: var(--bg-primary);
+  }
+
+  /* Form controls */
+  input,
+  textarea,
+  select {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: inherit;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-secondary);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--bg-primary);
+    box-shadow: 0 0 0 6px var(--accent-dim);
+  }
+
+  /* Input error state */
+  .input-error {
+    border-color: var(--danger) !important;
+  }
+
+  .input-error:focus {
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 6px var(--danger-dim) !important;
+  }
+
+  /* Utility class for consistent form control sizing */
+  .form-control {
+    display: block;
+    width: 100%;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    font-family: inherit;
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  /* Primary / secondary button styles mapped to design tokens */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background: var(--bg-primary);
+    color: var(--bg-secondary);
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.98);
+    cursor: pointer;
+  }
+
+  .btn:active {
+    transform: translateY(0);
+    filter: brightness(0.96);
+  }
+
+  .btn.secondary {
+    background: transparent;
+    color: var(--bg-primary);
+    border: 1px solid var(--border);
+  }
+
+  .btn.secondary:hover {
+    background: var(--accent-dim);
+  }
+
+  .btn.ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px dashed rgba(255,255,255,0.06);
+  }
+
+  button[disabled],
+  .btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
   }
 }
 
@@ -30,6 +171,166 @@
     text-shadow:
       0 1px 1px rgb(0 0 0 / 0.55),
       0 3px 14px rgb(0 0 0 / 0.45);
+  }
+
+  /* Utility class for hero image opacity controlled via CSS variable */
+  .hero-image {
+    opacity: var(--hero-image-opacity, 0.7);
+  }
+
+  /* Reusable component styles that map to design tokens */
+  .card {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background: var(--bg-primary);
+    color: var(--bg-secondary);
+    border-radius: var(--radius);
+    border: none;
+  }
+
+  .btn.secondary {
+    background: var(--accent-secondary);
+    color: var(--bg-secondary);
+  }
+
+  /* Header specific styles to use design tokens */
+  .site-header {
+    /* Use CSS variable so changing --bg-primary updates the header */
+    background-color: var(--bg-primary) !important;
+    /* subtle overlay gradient above the primary color so it still changes when --bg-primary changes */
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.04)), var(--bg-primary) !important;
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  /* Ensure header text is readable against the primary background */
+  .site-header,
+  .site-header * {
+    color: var(--bg-secondary) !important;
+  }
+
+  /* Brand should be visible on primary background */
+  .site-brand {
+    color: var(--bg-secondary) !important;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.12);
+  }
+
+  .nav-link {
+    color: var(--bg-secondary) !important;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    color: #ffffff !important;
+    background-color: rgba(255,255,255,0.06) !important;
+  }
+
+  .site-menu-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.04)), var(--bg-primary) !important;
+    color: var(--bg-secondary) !important;
+  }
+
+  /* Ensure nav container and any utility bg-white inside header don't show through */
+  .site-header nav {
+    background: transparent !important;
+  }
+
+  .site-header .bg-white,
+  .site-header .bg-white\/90,
+  .site-header [class*="bg-white"] {
+    background-color: transparent !important;
+  }
+
+  .site-dropdown {
+    /* Make desktop dropdown match the header's primary tint for a cohesive look */
+    background: linear-gradient(180deg, rgba(3,140,252,0.04), rgba(3,140,252,0.08)), var(--bg-primary) !important;
+    color: var(--bg-secondary) !important;
+    border-color: rgba(255,255,255,0.08) !important;
+    /* faint border and subtle shadow to separate from content */
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: 0 6px 18px rgba(2,76,176,0.12) !important;
+    backdrop-filter: blur(6px) saturate(120%) !important;
+  }
+
+  /* Prevent utility classes like bg-white from overriding the dropdown background */
+  .site-dropdown,
+  .site-dropdown * {
+    background-image: none !important;
+    background-color: transparent !important;
+  }
+
+  /* Apply the intended dropdown background and ensure readable text */
+  .site-dropdown {
+    background: linear-gradient(180deg, rgba(3,140,252,0.06), rgba(3,140,252,0.1)) !important;
+    background-color: var(--bg-primary) !important;
+    color: var(--bg-secondary) !important;
+  }
+
+  .site-dropdown .nav-link,
+  .site-dropdown a,
+  .site-dropdown button {
+    color: var(--bg-secondary) !important;
+  }
+
+  .site-dropdown .nav-link:hover,
+  .site-dropdown a:hover,
+  .site-dropdown button:hover {
+    color: #fff !important;
+    background-color: rgba(255,255,255,0.04) !important;
+  }
+
+  /* Neutralize utility border color classes that might add a light stripe */
+  .site-header.border-b,
+  .site-header .border-b {
+    border-bottom-color: var(--border) !important;
+  }
+
+  /* Mobile overlay uses the same dim token */
+  .mobile-menu-backdrop {
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+  }
+
+  /* Footer styles */
+  .site-footer {
+    /* Base color then a subtle darkening gradient for depth */
+    background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.08)), var(--bg-primary);
+    color: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+  }
+
+  /* Force readable text in the footer regardless of utility classes */
+  .site-footer,
+  .site-footer * {
+    color: var(--bg-secondary) !important;
+  }
+
+  .site-footer a {
+    color: rgba(255,255,255,0.95) !important;
+    transition: color 150ms ease;
+  }
+
+  /* Hero image control */
+  .hero-image {
+    opacity: var(--hero-image-opacity);
+    transition: opacity 250ms ease;
+  }
+
+  .site-footer a:hover,
+  .site-footer a:focus {
+    color: #fff !important;
+    text-decoration: underline;
   }
 }
 

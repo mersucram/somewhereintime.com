@@ -111,10 +111,9 @@ const ENQUIRY_TYPES = [
 ];
 
 /* ---------- helpers ---------- */
-const inputBase =
-  "mt-1 block w-full rounded-md border border-stone-300 bg-white px-3 py-2.5 text-sm text-stone-900 placeholder-stone-400 shadow-sm transition focus:border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-600/20";
+const inputBase = "form-control";
 
-const inputError = "border-red-400 focus:border-red-500 focus:ring-red-500/20";
+const inputError = "input-error";
 
 function Field({ id, label, required, error, children }) {
   return (
@@ -558,7 +557,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="inline-flex items-center gap-2 rounded-lg bg-amber-900 px-6 py-2.5 text-sm font-semibold text-amber-50 shadow-sm transition hover:bg-amber-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="btn"
                   >
                     {status === "submitting" ? (
                       <>

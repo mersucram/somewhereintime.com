@@ -52,7 +52,7 @@ export default function Home() {
               sizes="100vw"
               alt="Somewhere in Time Collectables LLC"
               // keep the image placement but shift the crop slightly down
-              className="h-full w-full object-cover object-[center_13%] opacity-80"
+              className="h-full w-full object-cover object-[center_13%] hero-image"
               loading="lazy"
             />
           </picture>
@@ -119,8 +119,8 @@ export default function Home() {
       </section>
 
       <section className="border-t border-stone-200/80 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 py-14 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <div className="max-w-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-4 py-14 flex-wrap sm:px-6 lg:px-8">
+          <div className="max-w-xl flex-1 min-w-0">
             <h2 className="font-display text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">
               Have something to sell or looking for a piece?
             </h2>
@@ -129,12 +129,11 @@ export default function Home() {
               collections.
             </p>
           </div>
-          <Link
-            to="/contact"
-            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-stone-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
-          >
-            Contact us
-          </Link>
+          <div className="shrink-0">
+            <Link to="/contact" className="btn">
+              Contact us
+            </Link>
+          </div>
         </div>
       </section>
     </div>

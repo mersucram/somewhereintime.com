@@ -212,7 +212,8 @@ export function buildMenuItems(navigation) {
 
         label: NAV_LABELS[key] ?? key,
 
-        href: toPath(value),
+      href: toPath(value),
+      iconKey: key,
 
       };
 
@@ -259,6 +260,7 @@ export function buildMenuItems(navigation) {
       key,
 
       label: NAV_LABELS[key] ?? key,
+      iconKey: key,
 
       children,
 

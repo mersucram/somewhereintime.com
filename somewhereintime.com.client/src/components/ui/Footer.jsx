@@ -57,9 +57,9 @@ function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-stone-200/80 bg-stone-900 text-stone-300">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
+    <footer className="mt-auto border-t border-stone-200/80 site-footer">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           {/* Brand + social */}
           <div>
             <p className="font-display text-lg font-semibold text-white">
@@ -101,8 +101,8 @@ function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 border-t border-stone-800 pt-8 text-center text-xs text-stone-500 sm:text-left">
-          <div className="flex items-center justify-between">
+        <div className="mt-6 border-t border-stone-800 pt-6 text-center text-xs text-stone-500 sm:text-left">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>© {year} Somewhere In Time Collectibles, LLC. All rights reserved.</div>
             <div>Application Design and Development Provided by <a href="http://www.mergetech.net" target="_blank" aria-description="MergeTech LLC" id="mergeTechLink">MergeTech LLC</a></div>
             <div className="mt-0">
